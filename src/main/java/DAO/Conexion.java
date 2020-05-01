@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -13,12 +14,14 @@ import javax.persistence.Persistence;
  * @author stive
  */
 public class Conexion {
+
     private static Conexion conexion;
     private EntityManagerFactory bd;
+    private static EntityManagerFactory em = null;
 
     private Conexion() {
+        em = this.getEm();
         this.bd = Persistence.createEntityManagerFactory("GuiaJSTLUP");
-
     }
 
     public static Conexion getConexion() {
@@ -30,5 +33,18 @@ public class Conexion {
 
     public EntityManagerFactory getBd() {
         return bd;
+    }
+
+    public static EntityManagerFactory getEm() {
+
+        if (em == null) {
+
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("GuiaJSTLUP");
+            em = emf;
+
+        }
+
+        return em;
+
     }
 }

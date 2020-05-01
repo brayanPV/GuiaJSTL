@@ -15,13 +15,20 @@ import java.util.List;
  * @author stive
  */
 public class Test {
-    
+
     public static void main(String[] args) {
-    Conexion con = Conexion.getConexion();
-    UsuarioJpaController UsuarioDAO = new UsuarioJpaController(con.getBd());
-    List<Usuario> usuarios = UsuarioDAO.findUsuarioEntities();
-    for(Usuario u: usuarios){
-        System.out.println("El usuario es "+ u.getUsuario());
-    }
+        Conexion con = Conexion.getConexion();
+        UsuarioJpaController UsuarioDAO = new UsuarioJpaController(con.getBd());
+        List<Usuario> usuarios = UsuarioDAO.findUsuarioEntities();
+        for (Usuario u : usuarios) {
+            System.out.println("El usuario es " + u.getUsuario());
+        }
+
+        System.out.println("SEGUNDO TEST");
+        UsuarioJpaController udao = new UsuarioJpaController();
+        List<Usuario> users = udao.findUsuarioEntities();
+        for(Usuario us: users){
+            System.out.println("El usuario es " + us.getUsuario());
+        }
     }
 }
