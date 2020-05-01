@@ -28,6 +28,10 @@ public class MensajeJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
 
+    public MensajeJpaController(){
+        emf = Conexion.getEm();
+    }
+    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
